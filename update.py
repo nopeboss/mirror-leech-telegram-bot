@@ -37,16 +37,16 @@ config_file = {
     if not key.startswith("__")
 }
 
-BOT_TOKEN = config_file.get("BOT_TOKEN", "")
+BOT_TOKEN = config_file.get("7681701929:AAH4tmQejPQYmJ4Os-F4o_qknMI3o0NZSZc", "")
 if not BOT_TOKEN:
     log_error("BOT_TOKEN variable is missing! Exiting now")
     exit(1)
 
 BOT_ID = BOT_TOKEN.split(":", 1)[0]
 
-if DATABASE_URL := config_file.get("DATABASE_URL", "").strip():
+if DATABASE_URL := config_file.get("mongodb+srv://golutibary:<db_LzcQtMFJmLeG2Smu>@cluster0.vi2iw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", "").strip():
     try:
-        conn = MongoClient(DATABASE_URL, server_api=ServerApi("1"))
+        conn = MongoClient(mongodb+srv://golutibary:<db_LzcQtMFJmLeG2Smu>@cluster0.vi2iw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0, server_api=ServerApi("1"))
         db = conn.mltb
         old_config = db.settings.deployConfig.find_one({"_id": BOT_ID}, {"_id": 0})
         config_dict = db.settings.config.find_one({"_id": BOT_ID})
